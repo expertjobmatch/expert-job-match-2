@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert Job Match - Find Your Dream Career Today!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #1a73e8;
+            --secondary: #34a853;
+            --dark: #202124;
+            --light: #f8f9fa;
+            --gray: #5f6368;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 28px;
+            color: var(--primary);
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .header-cta {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .header-cta:hover {
+            background-color: #0d5bb9;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #0d5bb9;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        /* Stats Section */
+        .stats {
+            background-color: white;
+            padding: 60px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .stat-text {
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        /* Offers Section */
+        .offers {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .offer-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .offer-image {
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .offer-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .offer-card:hover .offer-image img {
+            transform: scale(1.1);
+        }
+
+        .offer-content {
+            padding: 25px;
+        }
+
+        .offer-content h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .offer-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+
+        .offer-button {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .offer-button:hover {
+            background-color: #0d5bb9;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 80px 0;
+            background-color: #f0f4f8;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit-item {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .benefit-icon {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .benefit-item h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary), #0d5bb9);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        .cta-button:hover {
+            background-color: var(--light);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: #e8eaed;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #e8eaed;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            color: #9aa0a6;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 250px;
+                text-align: center;
+            }
+
+            .section-title h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-briefcase"></i>
+                    <div class="logo-text">Expert<span>JobMatch</span></div>
+                </div>
+                <div class="nav-links">
+                    <a href="#offers">Job Offers</a>
+                    <a href="#benefits">Why Choose Us</a>
+                    <a href="#how-it-works">How It Works</a>
+                </div>
+                <a href="#offers" class="header-cta">Find Jobs Now</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Find Your Dream Job With America's Top Companies</h1>
+                <p>Get matched with leading employers like Aldi, Pepsi, FedEx and more. Quick application process with high acceptance rates!</p>
+                <div class="hero-buttons">
+                    <a href="#offers" class="btn btn-primary">Explore Job Opportunities</a>
+                    <a href="#how-it-works" class="btn btn-secondary">How It Works</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">12,000+</div>
+                    <div class="stat-text">Jobs Available</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-text">Application Success Rate</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-text">Partner Companies</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24h</div>
+                    <div class="stat-text">Average Response Time</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offers Section -->
+    <section class="offers" id="offers">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Job Opportunities</h2>
+                <p>Select from our exclusive partnerships with top US companies</p>
+            </div>
+            
+            <div class="offers-grid">
+                <!-- Aldi -->
+                <div class="offer-card">
+                    <div class="offer-image">
+                        <img src="https://www.aldicareers.com.au/assets/file/c83fc034-75db-42bf-1572-08dbbea7ee9b/ALDI%20OG.jpg">
+                    </div>
+                    <div class="offer-content">
+                        <h3>Expert Job Match - Aldi</h3>
+                        <p>Join one of America's fastest-growing grocery retailers with competitive pay and benefits.</p>
+                        <a href="https://www.aplfb8trk.com/3BRKJ9BH/C4CZWB7/?sub1=srk" class="offer-button">Apply Now</a>
+                    </div>
+                </div>
+                
+                <!-- Pepsi -->
+                <div class="offer-card">
+                    <div class="offer-image">
+                        <img src="https://fox59.com/wp-content/uploads/sites/21/2022/07/GettyImages-1239044858.jpg?w=1280">
+                    </div>
+                    <div class="offer-content">
+                        <h3>Expert Job Match - PEPSI</h3>
+                        <p>Work with an iconic brand offering diverse roles in sales, distribution, and manufacturing.</p>
+                        <a href="https://www.aplfb8trk.com/3BRKJ9BH/C4BL1KL/?sub1=srk" class="offer-button">Apply Now</a>
+                    </div>
+                </div>
+                
+                <!-- FedEx -->
+                <div class="offer-card">
+                    <div class="offer-image">
+                        <img src="https://d386an9otcxw2c.cloudfront.net/oms/2634/image/2025/9/3F4GR_Drivers/Drivers.jpg" alt="FedEx Delivery">
+                    </div>
+                    <div class="offer-content">
+                        <h3>Expert Job Match - FedEx</h3>
+                        <p>Join the global leader in logistics with excellent career growth opportunities.</p>
+                        <a href="https://www.aplfb8trk.com/3BRKJ9BH/C39FG4T/?sub1=srk" class="offer-button">Apply Now</a>
+                    </div>
+                </div>
+                
+                <!-- Kelly Services -->
+                <div class="offer-card">
+                    <div class="offer-image">
+                        <img src="https://www.searchstax.com/wp-content/uploads/2023/03/kelly-services.png" alt="Office Workers">
+                    </div>
+                    <div class="offer-content">
+                        <h3>Expert Job Match - Kelly Services</h3>
+                        <p>Access temporary, temp-to-hire, and direct-hire positions across various industries.</p>
+                        <a href="https://www.aplfb8trk.com/3BRKJ9BH/C32H2FS/?sub1=srk" class="offer-button">Apply Now</a>
+                    </div>
+                </div>
+                
+                <!-- Facebook -->
+                <div class="offer-card">
+                    <div class="offer-image">
+                        <img src="https://i0.wp.com/www.careerguide365.com/wp-content/uploads/2025/11/Meta-Featured-Image.webp?resize=750%2C422&ssl=1">
+                    </div>
+                    <div class="offer-content">
+                        <h3>Expert Job Match - Facebook</h3>
+                        <p>Explore opportunities with one of the world's leading technology companies.</p>
+                        <a href="https://www.aplfb8trk.com/3BRKJ9BH/C2SXHHD/?sub1=srk" class="offer-button">Apply Now</a>
+                    </div>
+                </div>
+                
+                <!-- Jobs Near You -->
+                <div class="offer-card">
+                    <div class="offer-image">
+                        <img src="https://easy.jobs/wp-content/uploads/2022/05/How-to-Find-_Job-Near-Me_-Different-Ways-That-You-Didn_t-Know.png" alt="Local Jobs">
+                    </div>
+                    <div class="offer-content">
+                        <h3>Expert Job Match - Jobs Near You</h3>
+                        <p>Discover local opportunities that match your skills and preferences.</p>
+                        <a href="https://www.aplfb8trk.com/3BRKJ9BH/C2C2N5B/?sub1=srk" class="offer-button">Apply Now</a>
+                    </div>
+                </div>
+                
+                <!-- UPS -->
+                <div class="offer-card">
+                    <div class="offer-image">
+                        <img src="https://wgntv.com/wp-content/uploads/sites/5/2023/08/64e5563cc588c5.49804904.jpeg" alt="UPS Truck">
+                    </div>
+                    <div class="offer-content">
+                        <h3>Expert Job Match - UPS</h3>
+                        <p>Join the world's largest package delivery company with excellent benefits.</p>
+                        <a href="https://www.aplfb8trk.com/3BRKJ9BH/C29MRDP/?sub1=srk" class="offer-button">Apply Now</a>
+                    </div>
+                </div>
+                
+                <!-- Housekeeping -->
+                <div class="offer-card">
+                    <div class="offer-image">
+                        <img src="https://www.select.co.uk/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMWNCU3c9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--7851c41460f8c99d7c4963feb9019926feb97a69/Blog%20Content%20Images.png">
+                    </div>
+                    <div class="offer-content">
+                        <h3>Expert Job Match - Housekeeping</h3>
+                        <p>Find housekeeping positions in hotels, hospitals, and corporate facilities.</p>
+                        <a href="https://www.aplfb8trk.com/3BRKJ9BH/C22PCPN/?sub1=srk" class="offer-button">Apply Now</a>
+                    </div>
+                </div>
+                
+                <!-- Waste Management -->
+                <div class="offer-card">
+                    <div class="offer-image">
+                        <img src="https://www.coinet.org.uk/wp-content/uploads/2022/08/Waste-Management-Jobs.jpeg" alt="Waste Management">
+                    </div>
+                    <div class="offer-content">
+                        <h3>Expert Job Match - Waste Management</h3>
+                        <p>Join the leading provider of comprehensive waste management services.</p>
+                        <a href="https://www.aplfb8trk.com/3BRKJ9BH/C1P16KF/?sub1=srk" class="offer-button">Apply Now</a>
+                    </div>
+                </div>
+                
+                <!-- Kelly Services (Second) -->
+                <div class="offer-card">
+                    <div class="offer-image">
+                        <img src="https://cdn.dbusiness.com/wp-content/uploads/sites/33/2023/05/Kelly800.jpg">
+                    </div>
+                    <div class="offer-content">
+                        <h3>Expert Job Match - Kelly Services</h3>
+                        <p>Access temporary, temp-to-hire, and direct-hire positions across various industries.</p>
+                        <a href="https://www.aplfb8trk.com/3BRKJ9BH/C1DMW5R/?sub1=srk" class="offer-button">Apply Now</a>
+                    </div>
+                </div>
+                
+                <!-- OnlyGreatJobs - Kelly Services -->
+                <div class="offer-card">
+                    <div class="offer-image">
+                        <img src="https://images.wsj.net/im-418373/?width=1280&size=1" alt="Professional Office">
+                    </div>
+                    <div class="offer-content">
+                        <h3>OnlyGreatJobs - Kelly Services</h3>
+                        <p>Premium positions with Kelly Services offering competitive salaries and benefits.</p>
+                        <a href="https://www.aplfb8trk.com/3BRKJ9BH/C3NJJ1P/?sub1=srk" class="offer-button">Apply Now</a>
+                    </div>
+                </div>
+                
+                <!-- OnlyGreatJobs - Housekeeping -->
+                <div class="offer-card">
+                    <div class="offer-image">
+                        <img src="https://www.whistler-jobs.com/wp-content/uploads/2021/08/lead-housekeeper.jpg" alt="Hotel Housekeeping">
+                    </div>
+                    <div class="offer-content">
+                        <h3>OnlyGreatJobs - Housekeeping</h3>
+                        <p>Premium housekeeping positions in luxury hotels and resorts with excellent benefits.</p>
+                        <a href="https://www.aplfb8trk.com/3BRKJ9BH/C3M5M94/?sub1=srk" class="offer-button">Apply Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits" id="benefits">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Expert Job Match?</h2>
+                <p>We make job hunting simple, fast, and effective</p>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Quick Application</h3>
+                    <p>Apply to multiple jobs with a single profile in minutes</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>High Acceptance Rate</h3>
+                    <p>Our partnerships increase your chances of getting hired</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Secure & Private</h3>
+                    <p>Your information is protected and never shared without consent</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Top US Companies</h3>
+                    <p>Access exclusive opportunities with leading employers</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Start Your New Career?</h2>
+            <p>Join thousands of Americans who found their dream jobs through Expert Job Match</p>
+            <a href="#offers" class="btn cta-button">Get Matched Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Expert Job Match</h3>
+                    <p>Connecting talented Americans with top employers since 2015.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#offers">Browse Jobs</a></li>
+                        <li><a href="#benefits">Why Choose Us</a></li>
+                        <li><a href="#">Success Stories</a></li>
+                        <li><a href="#">Employer Partners</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Resume Tips</a></li>
+                        <li><a href="#">Interview Prep</a></li>
+                        <li><a href="#">Career Advice</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> support@expertjobmatch.com</li>
+                        <li><i class="fas fa-phone"></i> 1-800-EXP-JOBS</li>
+                        <li><i class="fas fa-map-marker-alt"></i> New York, NY 10001</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 Expert Job Match. All rights reserved. USA-based opportunities only.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add animation to offer cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all offer cards
+        document.querySelectorAll('.offer-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
